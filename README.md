@@ -1,1 +1,816 @@
-# Exhaupure-Startup
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExhauPure - Eco-Friendly Exhaust Filter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00c6ff;
+            --secondary-color: #0072ff;
+            --dark-bg: #1a1a2e;
+            --light-text: #e0e0e0;
+            --card-bg: #27273f;
+            --border-color: #3f3f5a;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var{--light-text};
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, var(--dark-bg) 0%, #0a0a1a 100%);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 90%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+        }
+
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin-left: 2.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 3px;
+            bottom: -8px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #0a0a1a 100%);
+            overflow: hidden;
+            position: relative;
+            padding-top: 80px; /* Offset for fixed header */
+        }
+
+        .hero-content {
+            z-index: 10;
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 0 0 20px rgba(0, 198, 255, 0.7);
+            animation: fadeInTop 1s ease-out forwards;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: var(--light-text);
+            margin-bottom: 2rem;
+            animation: fadeInBottom 1s ease-out forwards;
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 114, 255, 0.4);
+            animation: fadeInBottom 1s ease-out forwards;
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(0, 114, 255, 0.6);
+        }
+
+        .background-globe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 198, 255, 0.15) 0%, rgba(0, 198, 255, 0) 70%);
+            border-radius: 50%;
+            animation: rotateGlobe 60s linear infinite;
+        }
+
+        .background-globe::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid rgba(0, 198, 255, 0.3);
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(0, 198, 255, 0.4);
+            animation: pulseGlow 4s infinite alternate;
+        }
+
+        @keyframes fadeInTop {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInBottom {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotateGlobe {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes pulseGlow {
+            from { box-shadow: 0 0 50px rgba(0, 198, 255, 0.4); }
+            to { box-shadow: 0 0 70px rgba(0, 198, 255, 0.6), 0 0 30px rgba(0, 114, 255, 0.8); }
+        }
+
+        section {
+            padding: 6rem 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        h2 {
+            font-size: 3.5rem;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+
+        .about-us-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .about-us-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-us-text h3 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .about-us-text p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--light-text);
+            margin-bottom: 1rem;
+        }
+
+        .about-us-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            position: relative;
+            perspective: 1000px;
+        }
+        
+        /* Placeholder for a dynamic image for ExhauPure */
+        .about-us-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease-out;
+            transform: rotateY(0deg);
+        }
+
+        .about-us-image img:hover {
+            transform: rotateY(10deg) scale(1.03);
+        }
+
+        .product-showcase {
+            background-color: #0a0a1a;
+            padding-bottom: 8rem;
+        }
+
+        .product-showcase h2 {
+            color: var(--primary-color);
+            text-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+        }
+
+        .showcase-item {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(0, 114, 255, 0.3);
+        }
+
+        .showcase-item svg, .showcase-item .icon-placeholder {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            filter: drop-shadow(0 0 10px rgba(0, 198, 255, 0.5));
+        }
+
+        .icon-placeholder {
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--dark-bg);
+        }
+
+
+        .showcase-item h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .showcase-item p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--light-text);
+        }
+
+        .how-it-works {
+            background: linear-gradient(135deg, #0a0a1a 0%, var(--dark-bg) 100%);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .timeline-container.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background: var(--primary-color);
+            border: 4px solid var(--secondary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(0, 198, 255, 0.7);
+        }
+
+        .left-timeline {
+            left: 0;
+        }
+
+        .right-timeline {
+            left: 50%;
+        }
+
+        .right-timeline::after {
+            left: -16px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--card-bg);
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(0, 114, 255, 0.3);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-content p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--light-text);
+        }
+
+        .contact-section {
+            background-color: #0a0a1a;
+            text-align: center;
+        }
+
+        .contact-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: var(--light-text);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background-color: var(--card-bg);
+            padding: 2.5rem 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 114, 255, 0.3);
+        }
+
+        .contact-item svg {
+            width: 60px;
+            height: 60px;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 8px rgba(0, 198, 255, 0.5));
+        }
+
+        .contact-item h3 {
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-item a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #0a0a1a 0%, var(--dark-bg) 100%);
+            padding: 3rem 5%;
+            text-align: center;
+            color: var(--light-text);
+            font-size: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            .hero-content p {
+                font-size: 1.3rem;
+            }
+            nav a {
+                margin-left: 1.5rem;
+            }
+            .background-globe {
+                width: 600px;
+                height: 600px;
+            }
+            .about-us-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-us-image {
+                margin-top: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem 5%;
+                position: relative; /* Make header relative for smaller screens */
+                width: auto;
+            }
+            .logo {
+                margin-bottom: 1rem;
+            }
+            nav {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            nav a {
+                margin: 0.5rem 0;
+                width: fit-content;
+            }
+            .hero-section {
+                padding-top: 20px; /* Adjust padding for non-fixed header */
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 1.1rem;
+            }
+            .background-globe {
+                width: 400px;
+                height: 400px;
+            }
+            h2 {
+                font-size: 2.5rem;
+            }
+            .about-us-text h3 {
+                font-size: 2rem;
+            }
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-container::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            .left-timeline::after, .right-timeline::after {
+                left: 15px;
+            }
+            .right-timeline {
+                left: 0%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+            .cta-button {
+                padding: 0.7rem 1.8rem;
+                font-size: 1rem;
+            }
+            .background-globe {
+                width: 300px;
+                height: 300px;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .about-us-text h3 {
+                font-size: 1.8rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+        }
+
+        /* 3D Model placeholder for product showcase */
+        .product-3d-model {
+            width: 100%;
+            height: 400px; /* Adjust as needed */
+            background-color: #333;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            box-shadow: inset 0 0 30px rgba(0, 198, 255, 0.3), 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px dashed var(--primary-color);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">ExhauPure</a>
+        <nav>
+            <a href="#about-us">About Us</a>
+            <a href="#showcase">Product Showcase</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="background-globe"></div>
+            <div class="hero-content">
+                <h1>Revolutionizing Clean Air with <span style="color: var(--primary-color);">ExhauPure</span></h1>
+                <p>The next-generation eco-friendly car exhaust filter designed for a sustainable future.</p>
+                <a href="#showcase" class="cta-button">Discover ExhauPure</a>
+            </div>
+        </section>
+
+        <section id="about-us">
+            <h2>About <span style="color: var(--primary-color);">ExhauPure</span></h2>
+            <div class="about-us-content">
+                <div class="about-us-text">
+                    <h3>Pioneering a Cleaner Tomorrow, Today.</h3>
+                    <p>ExhauPure is more than just a filter; it's a commitment to environmental responsibility. Engineered with cutting-edge nanotechnology, our product drastically reduces harmful emissions from vehicle exhausts, turning polluted air into cleaner, breathable oxygen.</p>
+                    <p>We believe in a future where sustainable technology and automotive performance coexist. ExhauPure offers unparalleled filtration efficiency without compromising engine performance, providing a seamless transition to eco-conscious driving.</p>
+                    <p>Join us in driving change, one exhaust pipe at a time.</p>
+                </div>
+                <div class="about-us-image">
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="showcase" class="product-showcase">
+            <h2>ExhauPure <span style="color: var(--primary-color);">Product Showcase</span></h2>
+            <div class="product-3d-model">
+                Interactive 3D Model of ExhauPure Coming Soon!                
+            </div>
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <div class="icon-placeholder">N</div>
+                    <h3>Nanotech Filtration</h3>
+                    <p>Utilizes advanced nanomaterials to capture even the finest particulate matter and harmful gases with superior efficiency.</p>
+                </div>
+                <div class="showcase-item">
+                    <div class="icon-placeholder">H</div>
+                    <h3>High Durability</h3>
+                    <p>Constructed with robust, heat-resistant materials ensuring a long lifespan and consistent performance in extreme conditions.</p>
+                </div>
+                <div class="showcase-item">
+                    <div class="icon-placeholder">E</div>
+                    <h3>Eco-Friendly Design</h3>
+                    <p>Made from recyclable and sustainable components, ExhauPure is as good for the planet as the air it cleans.</p>
+                </div>
+                <div class="showcase-item">
+                    <div class="icon-placeholder">P</div>
+                    <h3>Performance Optimized</h3>
+                    <p>Engineered for minimal backpressure, ensuring no compromise on vehicle performance or fuel efficiency.</p>
+                </div>
+                <div class="showcase-item">
+                    <div class="icon-placeholder">S</div>
+                    <h3>Smart Monitoring</h3>
+                    <p>Integrated sensors (future upgrade) provide real-time data on filtration efficiency and filter health directly to your dashboard.</p>
+                </div>
+                <div class="showcase-item">
+                    <div class="icon-placeholder">I</div>
+                    <h3>Easy Installation</h3>
+                    <p>Designed for universal compatibility and straightforward installation, fitting a wide range of vehicle models.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="how-it-works">
+            <h2>How <span style="color: var(--primary-color);">ExhauPure</span> Transforms Emissions</h2>
+            <div class="timeline">
+                <div class="timeline-container left-timeline">
+                    <div class="timeline-content">
+                        <h3>1. Intake & Initial Filtration</h3>
+                        <p>Raw exhaust gases enter the ExhauPure system. Larger soot particles are immediately captured by the pre-filter mesh.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right-timeline">
+                    <div class="timeline-content">
+                        <h3>2. Nanofiber Core Activation</h3>
+                        <p>Gases then pass through the proprietary nanofiber core, where electrostatic attraction and molecular sieving trap ultra-fine particulates and toxic compounds like NOx and CO.</p>
+                    </div>
+                </div>
+                <div class="timeline-container left-timeline">
+                    <div class="timeline-content">
+                        <h3>3. Catalytic Conversion</h3>
+                        <p>A specialized catalytic converter within the filter converts remaining harmful gases into inert substances like nitrogen, water vapor, and carbon dioxide.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right-timeline">
+                    <div class="timeline-content">
+                        <h3>4. Oxygen Enrichment Chamber</h3>
+                        <p>A final chamber introduces a controlled amount of fresh air, aiding in the complete oxidation of trace pollutants and slightly enriching the output with oxygen.</p>
+                    </div>
+                </div>
+                <div class="timeline-container left-timeline">
+                    <div class="timeline-content">
+                        <h3>5. Clean Air Release</h3>
+                        <p>Significantly purified air, with vastly reduced pollutants, is released back into the atmosphere, contributing to cleaner urban environments.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Get in <span style="color: var(--primary-color);">Touch</span></h2>
+            <p>We're excited to partner with investors who share our vision for a sustainable future. Contact us to learn more about ExhauPure.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <h3>Team Name</h3>
+                    <p>CKJ Team</p>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <h3>Email Us</h3>
+                    <a href="mailto:CKJTeam@gmail.com">CKJTeam@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.57 2.3 1.15 4.6 1.83 6.89.23.75.29 1.57-.16 2.15l-1.63 1.63c-.45.45-.66 1.05-.66 1.62a1.8 1.8 0 0 0 0 .14c.06.33.2.65.41.97l1.37 1.37a.8.8 0 0 0 .58.21.79.79 0 0 0 .56-.16l1.37-1.37c.32-.21.64-.35.97-.41a1.8 1.8 0 0 0 .14 0c.57 0 1.17.21 1.62.66l1.63 1.63c.58.45 1.39.42 2.15-.16 2.29-.68 4.59-1.26 6.89-1.83a2 2 0 0 1 1.72 2z"></path></svg>
+                    <h3>Call Us</h3>
+                    <a href="tel:09123456789">09123456789</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ExhauPure by CKJ Team. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - document.querySelector('header').offsetHeight,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Intersection Observer for animations
+            const faders = document.querySelectorAll('.showcase-item, .timeline-container');
+            const appearOptions = {
+                threshold: 0.3,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('animated');
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+
+            // Hero section animations (already triggered by CSS keyframes, but can be managed here too)
+            const heroTitle = document.querySelector('.hero-content h1');
+            const heroText = document.querySelector('.hero-content p');
+            const heroButton = document.querySelector('.cta-button');
+
+            // Resetting for JS animation (if needed, otherwise CSS is fine)
+            heroTitle.style.animation = 'none';
+            heroText.style.animation = 'none';
+            heroButton.style.animation = 'none';
+
+            setTimeout(() => {
+                heroTitle.style.animation = 'fadeInTop 1s ease-out forwards';
+            }, 100);
+            setTimeout(() => {
+                heroText.style.animation = 'fadeInBottom 1s ease-out forwards';
+                heroText.style.opacity = '0'; // Ensure it starts hidden
+            }, 400);
+            setTimeout(() => {
+                heroButton.style.animation = 'fadeInBottom 1s ease-out forwards';
+                heroButton.style.opacity = '0'; // Ensure it starts hidden
+            }, 800);
+        });
+    </script>
+</body>
+</html>
